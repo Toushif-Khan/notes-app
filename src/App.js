@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
+import Main from './Main'
+import Footer from './Footer'
+
 
 function App() {
+  const [notes,setnotes] = useState([]);
+  const addnote = (color) => {
+      const newnote = {
+        id: Date.now(),
+        title: "",
+        content: "",
+        clr: color
+      }
+      setnotes (prev=>[...prev,newnote])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='App'>
+    <Navbar/>
+    <Sidebar addnote={addnote}/>
+    <Main notes={notes} setnotes={setnotes}/>
+    <Footer/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
