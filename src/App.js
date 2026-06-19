@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import Main from './Main'
@@ -7,20 +7,48 @@ import Footer from './Footer'
 
 function App() {
   const [notes,setnotes] = useState([]);
-  const addnote = (color) => {
-      const newnote = {
-        id: Date.now(),
-        title: "",
-        content: "",
-        clr: color
-      }
-      setnotes (prev=>[...prev,newnote])
+  const fetchNotes = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/notes");
+      const data = await res.json();
+      setnotes(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    fetchNotes();
+  },[]);
+
+  const addnote = async (color) => {
+     
+    try {
+      await fetch("http://localhost:3000/notes",
+        {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          title:"",
+          content:"",
+          clr:color
+        })
+      });
+
+        console.log("POST status:", Response.status)
+      fetchNotes();
+
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div id='App'>
     <Navbar/>
     <Sidebar addnote={addnote}/>
-    <Main notes={notes} setnotes={setnotes}/>
+    <Main notes={notes} setnotes={setnotes} fetchNotes={fetchNotes}/>
     <Footer/>
     </div>
   )

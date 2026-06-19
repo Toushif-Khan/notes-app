@@ -183,7 +183,7 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    height: 180px;
+    height: 250px;
     width: 220px;
     display: flex;
     flex-direction: column;
@@ -200,7 +200,7 @@ body {
 
 
 input {
-    height: 30px;
+      height: 25px;
     width: 90%;
     border-radius: 10px;
     border: none;
@@ -209,31 +209,61 @@ input {
 }
 
 textarea {
-    flex: 1;
+     flex: 1;
     width: 90%;
+    min-height: 130px;
+
     border-radius: 10px;
     border: none;
-    margin-top: 5px;
-    padding: 5px;
+
+    margin-top: 8px;
+    padding: 8px;
+
     resize: none;
     background: rgba(255,255,255,0.8);
+}
+
+.note-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 
 .del {
     border-radius: 10px;
-    height: 25px;
-    width: 40px;
-    align-self: flex-end;
-    margin-top: 5px;
+    height: 30px;
+    width: 60px;
+
     border: none;
     cursor: pointer;
+
     background: crimson;
     color: white;
+
     transition: 0.3s ease;
 }
 
 .del:hover {
     transform: scale(1.1);
     background: darkred;
+}
+
+.save {
+    border-radius: 10px;
+    height: 30px;
+    width: 60px;
+
+    border: none;
+    cursor: pointer;
+
+    background: #2e7d32;
+    color: white;
+
+    transition: 0.3s ease;
+}
+
+.save:hover {
+    transform: scale(1.1);
+    background: #1b5e20;
 }
