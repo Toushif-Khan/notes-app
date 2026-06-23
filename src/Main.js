@@ -11,7 +11,7 @@ const updateNote = (_id,field,value) =>{
 const delNote = async (id) =>{
 
   try {
-    await fetch(`http://localhost:3000/notes/${id}` , {
+    await fetch(`https://notes-backend-a7z4.onrender.com/notes/${id}` , {
       method: "DELETE"
     });
 
@@ -28,7 +28,7 @@ const saveNote = async(note) => {
   try {
 
   const response = await fetch(
-    `http://localhost:3000/notes/${note._id}` ,
+    `https://notes-backend-a7z4.onrender.com/notes/${note._id}` ,
     {
       method:"PUT",
       headers:{

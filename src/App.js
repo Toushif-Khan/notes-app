@@ -9,7 +9,7 @@ function App() {
   const [notes,setnotes] = useState([]);
   const fetchNotes = async () => {
     try {
-      const res = await fetch("http://localhost:3000/notes");
+      const res = await fetch("https://notes-backend-a7z4.onrender.com/notes");
       const data = await res.json();
       setnotes(data);
     } catch (error) {
@@ -24,7 +24,7 @@ function App() {
   const addnote = async (color) => {
      
     try {
-      await fetch("http://localhost:3000/notes",
+      await fetch("https://notes-backend-a7z4.onrender.com/notes",
         {
         method:"POST",
         headers:{
